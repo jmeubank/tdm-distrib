@@ -1,0 +1,14 @@
+python
+import sys
+from os.path import dirname
+import glob
+globbed_paths = sorted(glob.glob(dirname(sys.executable) + '/../../share/gcc-*/python'), reverse=True)
+for path in globbed_paths:
+	sys.path.insert(0, path)
+	try:
+		from libstdcxx.v6.printers import register_libstdcxx_printers
+		register_libstdcxx_printers(None)
+		break
+	except ModuleNotFoundError:
+		sys.path.pop(0)
+end
