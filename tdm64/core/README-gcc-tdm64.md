@@ -84,6 +84,11 @@ variable.
 ««    SUPPORT    »»
    =============
 
+TDM-GCC is currently a one-man show, so support is best-effort. You can submit
+helpful problem reports at <https://github.com/jmeubank/tdm-gcc/issues>, and
+they will be triaged. Reports that appear to consistently cause TDM-GCC to be
+unusable for a majority of users will be addressed first.
+
 Support for the x86_64-w64-mingw32 GCC target, as well as for any
 incompatibilities in its runtime API, is provided where possible by the
 MinGW-w64 project. The MinGW-w64 project provides multiple venues for support
@@ -92,11 +97,6 @@ SourceForge, and a web-based issue tracker on SourceForge.
 
 For more information about MinGW-w64, see the project's home page at
 <http://mingw-w64.sourceforge.net/>.
-
-If you encounter a problem while using a TDM-GCC build that isn't present in a
-previous MinGW-w64 MSYS2 or TDM release, please submit a helpful bug report! See
-<http://tdm-gcc.tdragon.net/bugs> for instructions. Support for TDM-GCC is on a
-low-priority best-effort basis.
 
 
 ««    USAGE NOTES    »»
