@@ -25,8 +25,8 @@ encouraged to try them out as well to see if your problem exists on both
 toolchains.
 
 However, you may also submit a helpful bug report via
-<http://tdm-gcc.tdragon.net/bugs>, though TDM-GCC is only supported on a minimal
-best-effor basis.
+<https://github.com/jmeubank/tdm-gcc/issues>, though TDM-GCC is only supported on a minimal
+best-effort basis.
 
 
 
