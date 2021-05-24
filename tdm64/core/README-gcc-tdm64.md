@@ -1,7 +1,7 @@
 ﻿                    ________________________________________
                   _/_                                      _\_
                __/__/  TDM-GCC Compiler Suite for Windows  \__\__
-              | « « |             GCC 9 Series             | » » |
+              | « « |            GCC 10 Series             | » » |
                ¯¯\¯¯\      MinGW-w64 64/32-bit Edition     /¯¯/¯¯
                   ¯\¯                                      ¯/¯
                     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
@@ -19,14 +19,13 @@ will be inherent to the x86_64-w64-mingw32 GCC target or to the MinGW-w64
 runtime API. As such, you are encouraged to report bugs to the tracker for the
 MinGW-w64 project on SourceForge (<https://sourceforge.net/p/mingw-w64/bugs/>).
 
-Please note that the MinGW-w64 project also maintains easy-to-install GCC 64-bit
-and 32-bit toolchains as part of [MSYS2](https://www.msys2.org/), and you are
-encouraged to try them out as well to see if your problem exists on both
-toolchains.
+Please note that the MSYS2 project also maintains easy-to-install GCC 64-bit
+and 32-bit toolchains at <https://www.msys2.org/>, and you are encouraged to
+try them out as well to see if your problem exists on both toolchains.
 
-However, you may also submit a helpful bug report via
-<https://github.com/jmeubank/tdm-gcc/issues>, though TDM-GCC is only supported on a minimal
-best-effort basis.
+However, you may also submit a helpful bug report at
+<https://github.com/jmeubank/tdm-gcc/issues>, though TDM-GCC is only supported
+on a minimal best-effort basis.
 
 
 
@@ -36,9 +35,8 @@ best-effort basis.
 ## TDM/MINGW INSTALLER ##
 
 Using the TDM/MinGW installer is highly recommended; it can automatically
-install TDM-GCC (or the official MinGW GCC) as well as all supplementary base
-system packages. The installer uses a standard wizard interface with reasonable
-defaults.
+install TDM-GCC as well as all supplementary base system packages. The
+installer uses a standard wizard interface with reasonable defaults.
 
 ## MANUAL INSTALLATION ##
 
@@ -54,23 +52,23 @@ each archive. Use whichever is easiest.
 
 ### REQUIRED BASE: ###
  * gcc-core
-    * [gcc-9.2.0-tdm64-1-core.tar.xz]
+    * [gcc-10.3.0-tdm64-1-core.tar.xz]
  * binutils
-    * [binutils-2.33.1-tdm64-1.tar.xz]
+    * [binutils-2.36.1-tdm64-1.tar.xz]
  * mingw64-runtime
-    * [mingw64runtime-v7-git20191109-gcc9-tdm64-1.tar.xz]
+    * [mingw64runtime-v8-git2021050601-gcc10-tdm64-1.tar.xz]
 
 ### OPTIONAL: ###
- * gcc-c++ (gcc-9.2.0-tdm64-1-c++) - C++ support
- * gcc-ada (gcc-9.2.0-tdm64-1-ada) - Ada support
- * gcc-fortran (gcc-9.2.0-tdm64-1-fortran) - Fortran support
- * gcc-objc (gcc-9.2.0-tdm64-1-objc) - Objective-C/C++ support
- * gcc-openmp (gcc-9.2.0-tdm64-1-openmp) - OpenMP support
+ * gcc-c++ (gcc-10.3.0-tdm64-1-c++) - C++ support
+ * gcc-ada (gcc-10.3.0-tdm64-1-ada) - Ada support
+ * gcc-fortran (gcc-10.3.0-tdm64-1-fortran) - Fortran support
+ * gcc-objc (gcc-10.3.0-tdm64-1-objc) - Objective-C/C++ support
+ * gcc-openmp (gcc-10.3.0-tdm64-1-openmp) - OpenMP support
  * mingw32-make - GNU make for *-mingw32 GCC
     * [make-3.82.90-2-mingw32-cvs-20120902-bin.tar.lzma](http://prdownloads.sourceforge.net/mingw/make-3.82.90-2-mingw32-cvs-20120902-bin.tar.lzma?download)
     * [libintl-0.17-1-mingw32-dll-8.tar.xz](http://osdn.net/dl/mingw/libintl-0.18.3.2-2-mingw32-dll-8.tar.xz)
     * [libiconv-1.13.1-1-mingw32-dll-2.tar.lzma](http://osdn.net/dl/mingw/libiconv-1.14-4-mingw32-dll-2.tar.xz)
- * gdb (gdb-8.3.1-tdm64-1) - GNU source-level debugger, for x86_64-w64-mingw32
+ * gdb (gdb-10.2-tdm64-1) - GNU source-level debugger, for x86_64-w64-mingw32
      GCC
 
 You'll need GDB particularly if you want to use an IDE with debugging support.
@@ -104,13 +102,14 @@ For more information about MinGW-w64, see the project's home page at
 
 ## WINDOWS-DEFAULT-MANIFEST ##
 
-As of release 9.2.0, both editions of TDM-GCC come with a
-`windows-default-manifest` package. If you install it (which is recommended), it
-provides an automatically-added XML compatibility manifest to all executables.
-This internal manifest, `mingw32/lib/default-manifest.o`,  is designed to signal
-to recent versions of Windows (8.1 and later) that the executable is compatible
-with all versions of Windows and doesn't need to be run in a compatibility
-environment for older versions.
+Starting from release 9.2.0, both editions of TDM-GCC come with a
+`windows-default-manifest` package. If you install it (which is recommended),
+it provides an automatically-added XML compatibility manifest to all
+executables. This internal manifest,
+`x86_64-w64-mingw32/lib/default-manifest.o`, is designed to signal to recent
+versions of Windows (8.1 and later) that the executable is compatible with all
+versions of Windows and doesn't need to be run in a compatibility environment
+for older versions.
 
 If you provide your own manifest, it will override the default manifest.
 
@@ -406,12 +405,8 @@ See the [Github repository](https://github.com/jmeubank/tdm-gcc-src) for more de
 + libgcceh.patch                                               # Reintegrate libgcc_eh into libgcc
 + defstatic.patch                                              # Make static versions of libgcc and libstdc++ the default, instead of the shared versions
 + ada-lfs.patch                                                # Allow Ada to build for older versions of the MSVCRT without a stat64 equivalent
-+ relocate.patch                                               # Make GCC fully relocatable, not searching any fixed paths
-+ eh_shmem.patch                                               # Create a shared memory handle to allow exceptions from DLLs without shared GCC DLLs
-+ threads.patch                                                # Support winpthreads for the 32-bit mingw32 target and a static version of winpthreads
 + more-gnattools.patch                                         # Enable building gnatdll for mingw* targets
 + windows-lrealpath.patch                                      # Allow forward slashes in libiberty as path separators on Windows
-+ mutex-leak.patch                                             # Fix memory leak when using C++11 mutexes
 + xmmintrin.patch                                              # Add C++ include guards to xmmintrin.h
 + crtbegin.patch                                               # Remove static modifier from `__EH_FRAME_BEGIN__`
 + gnat-implibs.patch                                           # Create import libraries for the DLL versions of libgnat and libgnarl
@@ -419,26 +414,32 @@ See the [Github repository](https://github.com/jmeubank/tdm-gcc-src) for more de
 + mcrtdll.patch                                                # Allow specifying newer MSVCRT versions with -mcrtdll=
 + dw2-reg-frame.patch                                          # Prevent DW2 frame register/unregister from getting mistakenly stripped
 + libgfortran.patch                                            # Allow libgfortran to use umask semantics on MinGW64 but not on MinGW32
-+ mingw32-float.h.patch                                        # Fix inclusion of GCC float.h before MinGW.org float.h
 + ssp-wincrypt.patch                                           # Include wincrypt.h for libssp
-+ ada-unicode.patch                                            # Fix the include and define order in ada headers to allow Unicode TCHAR detection to work under MinGW.org
-+ mingw-wformat.patch                                          # Add MinGW-specific format attributes to GCC's formatted printf checking
-+ mingw32-ada-socket.patch                                     # Fix headers so that winsock constants are correctly found and used in Ada runtime.
 + libobjc-install.patch                                        # Allow the libobjc DLL to be stripped when installed
-+ Relocate-libintl.patch                                       # Makes libintl resources in Windows binaries automatically relocatable
 + branch-clone_function_name_1-Retain-any-stdcall-suffix.patch # Preserve stdcall @n suffixes at the end of function names when cloning
-+ libstdc__-in-out.patch                                       # Don't use Microsoft-reserved `__in` or `__out` as variable names
 + fix-libatomic-building-for-threads-win32.patch               # Build libatomic with pthreads on Windows
 + ktietz-libgomp.patch                                         # Zero allocated memory in libgomp and run DejaGNU tests if desired
 + gcc-libgomp-ftime64.patch                                    # Use 64-bit ftime in libgomp
 + buildsys.patch                                               # Minor build system hacks for building TDM-GCC in MSYS
 + diagnostic-color.patch                                       # Emit colors in GCC diagnostics when running under MinTTY
 + Handle-spaces-in-path-for-default-manifest.patch             # Allow spaces in specfile entries that expand to full paths if they are library files
-+ Windows-Follow-Posix-dir-exists-semantics-more-close.patch   # From 9f49390e2cd9085ca1cc03906a146861dbe8135f Mon Sep 17 00:00:00 2001
-+ Windows-Don-t-ignore-native-system-header-dir.patch          # From a2bc77d0e198659e72c9addb89a993007de99fe7 Mon Sep 17 00:00:00 2001
++ Windows-Don-t-ignore-native-system-header-dir.patch          # Windows: Don't ignore native system header dir
++ relocate.patch                                               # Make GCC fully relocatable, not searching any fixed paths
++ Relocate-libintl.patch                                       # Makes libintl resources in Windows binaries automatically relocatable
++ ada-unicode.patch                                            # Fix the include and define order in ada headers to allow Unicode TCHAR detection to work under MinGW.org
 + stdcxx-mingw32.patch                                         # Fixes for building libstdc++ under MinGW.org API
++ libgomp-Don-t-hard-code-MS-printf-attributes.patch           # Don't hard-code MS printf attributes
++ libgcc-ldflags.patch                                         # Propagate LDFLAGS while building libgcc_s
++ backport-longjmp-fix.patch                                   # Fix SEH frame pointer alignment
++ mingw32-ada-socket.patch                                     # Fix headers so that winsock constants are correctly found and used in Ada runtime.
++ mingw32.patch                                                # Fixes for building C and Ada under TDM-GCC
++ libstdc__-in-out.patch                                       # Don't use Microsoft-reserved `__in` or `__out` as variable names
++ eh_shmem.patch                                               # Create a shared memory handle to allow exceptions from DLLs without shared GCC DLLs
++ threads.patch                                                # Support winpthreads for the 32-bit mingw32 target and a static version of winpthreads
++ mutex-leak.patch                                             # Fix memory leak when using C++11 mutexes
++ jit-port-libgccjit-to-Windows.patch                          # Build libgccjit for MinGW targets
++ gcc-jit-Rename-libgccjit-dll.patch                           # Build libgccjit with version numbers
 + libs64.patch                                                 # Append "_64" to names of 64-bit runtime DLLs
-
 
 
 ««    SOURCE CODE    »»
@@ -453,7 +454,7 @@ Each of the above repositories contains a `_PATCHES` folder containing the
 patches that were applied to the most recent TDM releases.
 
  * The TDM-GCC installer: https://github.com/jmeubank/tdm-gcc-installer
- * The scripts that drive the builds: https://github.com/jmeubank/tdm-gccmaster-scripts
+ * The scripts that drive the builds: https://github.com/jmeubank/tdm-gcc
 
 
 ««    COMPONENT LICENSES    »»

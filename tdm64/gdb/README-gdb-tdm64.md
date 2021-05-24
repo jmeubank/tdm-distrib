@@ -21,8 +21,9 @@ that target 64-bit Windows, without any issues.
 
 TDM-GCC's GDB packages incorporate wrapper executables and auto-executing
 Python code to load libstdc++ pretty printers. If you encounter a bug relating
-to one of these, please file a report according to the directions at:
-    http://tdm-gcc.tdragon.net/bugs
+to one of these, please file a report at:
+   https://github.com/jmeubank/tdm-binutils-gdb/issues
+
 Otherwise, bug reports should be directed to Sourceware:
     http://www.gnu.org/software/gdb/bugs/
 
@@ -39,7 +40,7 @@ defaults.
 
 ## MANUAL INSTALLATION ##
 
-Download the GDB archive (provided in .zip or .tar.lzma format) and unpack it to
+Download the GDB archive (provided in .zip or .tar.xz format) and unpack it to
 the location of your choosing. It's recommended that you choose a path with no
 spaces in the folder names. This GDB edition is designed to cooperate with other
 executables in a standard POSIX-on-Windows installation tree if desired.
@@ -97,7 +98,7 @@ use, you need to:
   2) Make sure the `%PATH%` environment variable includes that installation's
      Python DLL (often the DLL is installed to C:\Windows\System32, already in
      `%PATH%`), and
-  3) Rename or delete `python38.dll` from the gdb64/bin directory.
+  3) Rename or delete `python39.dll` from the gdb64/bin directory.
 
 ## PYTHON PRETTY-PRINTER AUTO-LOADING ##
 
@@ -117,6 +118,7 @@ rename or delete the gdbinit script file.
 The GDB package is a binary distribution licensed under the GPLv3; see
 "COPYING3-gdb-tdm.txt". It is additionally based on the Expat XML Parser, whose
 license is available in "COPYING-expat.txt"; on the "winpthreads" compatibility
-library, whose license is available in "COPYING.winpthreads.txt"; and finally it
-includes a copy of the Python DLL and base libraries, licensed under the terms
-in LICENSE-python.txt.
+library, whose license is available in "COPYING.winpthreads.txt"; on the
+ncurses text user interface framework, whose license is available in
+COPYING-ncurses.txt; and finally it includes a copy of the Python DLL and base
+libraries, licensed under the terms in LICENSE-python.txt.

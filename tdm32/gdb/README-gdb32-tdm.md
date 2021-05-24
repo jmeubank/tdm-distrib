@@ -1,8 +1,8 @@
 ﻿                    ________________________________________
                   _/_                                      _\_
                __/__/  TDM-GCC Compiler Suite for Windows  \__\__
-              | « « |            GDB 8.3 Series            | » » |
-               ¯¯\¯¯\         MinGW 32-bit Edition         /¯¯/¯¯
+              | « « |            GDB 10.2 Series           | » » |
+               ¯¯\¯¯\       MinGW.org 32-bit Edition       /¯¯/¯¯
                   ¯\¯                                      ¯/¯
                     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 
@@ -19,10 +19,10 @@ that target 32-bit Windows, without any issues.
 
 **REPORTING BUGS:**
 
-TDM-GCC's GDB packages incorporate wrapper executables and auto-executing Python
-code to load libstdc++ pretty printers. If you encounter a bug relating to one
-of these, please file a report according to the directions at:
-http://tdm-gcc.tdragon.net/bugs
+TDM-GCC's GDB packages incorporate wrapper executables and auto-executing
+Python code to load libstdc++ pretty printers. If you encounter a bug relating
+to one of these, please file a report at:
+   https://github.com/jmeubank/tdm-binutils-gdb/issues
 
 Otherwise, bug reports should be directed to Sourceware:
     http://www.gnu.org/software/gdb/bugs/
@@ -34,13 +34,13 @@ Otherwise, bug reports should be directed to Sourceware:
 ## TDM-GCC INSTALLER ##
 
 Using the TDM-GCC installer is highly recommended; it can automatically install
-TDM's GDB (or the official MinGW GDB) as well as all supplementary base system
-packages. The installer uses a standard wizard interface with reasonable
+TDM's GDB (or the official MinGW.org GDB) as well as all supplementary base
+system packages. The installer uses a standard wizard interface with reasonable
 defaults.
 
 ## MANUAL INSTALLATION ##
 
-Download the GDB archive (provided in .zip or .tar.lzma format) and unpack it to
+Download the GDB archive (provided in .zip or .tar.xz format) and unpack it to
 the location of your choosing. It's recommended that you choose a path with no
 spaces in the folder names. This GDB edition is designed to cooperate with other
 executables in a standard POSIX-on-Windows installation tree if desired.
@@ -91,7 +91,7 @@ use, you need to:
   2) Make sure the `%PATH%` environment variable includes that installation's
      Python DLL (often the DLL is installed to C:\Windows\System32, already in
      `%PATH%`), and
-  3) Rename or delete `python38.dll` from the gdb32/bin directory.
+  3) Rename or delete `python39.dll` from the gdb32/bin directory.
 
 ## PYTHON PRETTY-PRINTER AUTO-LOADING ##
 

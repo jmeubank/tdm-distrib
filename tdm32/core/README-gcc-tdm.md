@@ -1,8 +1,8 @@
 ﻿                    ________________________________________
                   _/_                                      _\_
                __/__/  TDM-GCC Compiler Suite for Windows  \__\__
-              | « « |             GCC 9 Series             | » » |
-               ¯¯\¯¯\         MinGW 32-bit Edition         /¯¯/¯¯
+              | « « |            GCC 10 Series             | » » |
+               ¯¯\¯¯\       MinGW.org 32-bit Edition       /¯¯/¯¯
                   ¯\¯                                      ¯/¯
                     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 
@@ -18,8 +18,8 @@ distributed by the MinGW.org project.
 ### BUGS ###
 
 If you encounter a problem while using a TDM-GCC build that isn't present in a
-previous MinGW or TDM release, please submit a helpful bug report! See
-<http://tdm-gcc.tdragon.net/bugs> for instructions.
+previous MinGW or TDM release, please submit a helpful bug report at
+<https://github.com/jmeubank/tdm-gcc/issues>.
 
 
 ««    INSTALLATION    »»
@@ -46,26 +46,26 @@ each archive. Use whichever is easiest.
 
 ### REQUIRED BASE:
  * gcc-core
-    * [gcc-9.2.0-tdm-1-core.tar.xz]
+    * [gcc-10.3.0-tdm-1-core.tar.xz]
  * binutils
     * [binutils-2.32-1-mingw32-bin.tar.xz](http://osdn.net/dl/mingw/binutils-2.32-1-mingw32-bin.tar.xz)
  * mingwrt
-    * [mingwrt-5.2.3-mingw32-dev.tar.xz](http://osdn.net/dl/mingw/mingwrt-5.2.3-mingw32-dev.tar.xz)
-    * [mingwrt-5.2.3-mingw32-dll.tar.xz](http://osdn.net/dl/mingw/mingwrt-5.2.3-mingw32-dll.tar.xz)
+    * [mingwrt-5.4.1-mingw32-dev.tar.xz](http://osdn.net/dl/mingw/mingwrt-5.4.1-mingw32-dev.tar.xz)
+    * [mingwrt-5.4.1-mingw32-dll.tar.xz](http://osdn.net/dl/mingw/mingwrt-5.4.1-mingw32-dll.tar.xz)
  * w32api
-    * [w32api-5.2.3-mingw32-dev.tar.xz](http://osdn.net/dl/mingw/w32api-5.2.3-mingw32-dev.tar.xz)
+    * [w32api-5.4.1-mingw32-dev.tar.xz](http://osdn.net/dl/mingw/w32api-5.4.1-mingw32-dev.tar.xz)
 
 ### OPTIONAL:
- * gcc-c++ (gcc-9.2.0-tdm-1-c++) - C++ support
- * gcc-ada (gcc-9.2.0-tdm-1-ada) - Ada support
- * gcc-fortran (gcc-9.2.0-tdm-1-fortran) - Fortran support
- * gcc-objc (gcc-9.2.0-tdm-1-objc) - Objective-C/C++ support
- * gcc-openmp (gcc-9.2.0-tdm-1-openmp) - OpenMP support
+ * gcc-c++ (gcc-10.3.0-tdm-1-c++) - C++ support
+ * gcc-ada (gcc-10.3.0-tdm-1-ada) - Ada support
+ * gcc-fortran (gcc-10.3.0-tdm-1-fortran) - Fortran support
+ * gcc-objc (gcc-10.3.0-tdm-1-objc) - Objective-C/C++ support
+ * gcc-openmp (gcc-10.3.0-tdm-1-openmp) - OpenMP support
  * mingw32-make - GNU make for *-mingw32 GCC
     * [make-3.82.90-2-mingw32-cvs-20120902-bin.tar.lzma](http://prdownloads.sourceforge.net/mingw/make-3.82.90-2-mingw32-cvs-20120902-bin.tar.lzma?download)
     * [libintl-0.17-1-mingw32-dll-8.tar.xz](http://osdn.net/dl/mingw/libintl-0.18.3.2-2-mingw32-dll-8.tar.xz)
     * [libiconv-1.13.1-1-mingw32-dll-2.tar.lzma](http://osdn.net/dl/mingw/libiconv-1.14-4-mingw32-dll-2.tar.xz)
- * gdb (gdb32-8.3.1-tdm-1) - GNU source-level debugger, Python enabled, for
+ * gdb (gdb32-10.2-tdm-1) - GNU source-level debugger, Python enabled, for
      mingw32
 You'll need GDB particularly if you want to use an IDE with debugging support.
 
@@ -87,7 +87,7 @@ variable.
 
 ## WINDOWS-DEFAULT-MANIFEST ##
 
-As of release 9.2.0, both editions of TDM-GCC come with a
+Starting from release 9.2.0, both editions of TDM-GCC come with a
 `windows-default-manifest` package. If you install it (which is recommended), it
 provides an automatically-added XML compatibility manifest to all executables.
 This internal manifest, `mingw32/lib/default-manifest.o`,  is designed to signal
@@ -169,6 +169,10 @@ sure to read and comply with its MIT-style license, included in the file
 
 ## LTO (LINK-TIME OPTIMIZATION) ##
 
+> IMPORTANT NOTE:
+> There is a known bug in the binutils 2.32-1 release that makes LTO unable to
+> work with static libraries (.a files) in many cases.
+
 Every TDM-GCC release since 4.5.1 includes support for GCC's Link-Time
 Optimizer. As long as GCC's own drivers (gcc, g++, etc.) are used at both
 compile-time and link-time, and the "-flto" option is specified at both compile-
@@ -189,7 +193,7 @@ exceptions) through "foreign" stack frames: stack frames compiled by another
 non-DW2-enabled compiler, such as OS DLLs in a Windows callback.
 
 This means that you should in general choose the SJLJ version of the TDM-GCC
-builds unless you know you need faster exception-aware programs and can be
+builds, unless you know you need faster exception-aware programs and can be
 certain you will never throw an exception through a foreign stack area.
 
 As distributed, the SJLJ and DW2 packages of TDM-GCC can coexist peacefully
@@ -316,7 +320,7 @@ Ideally, the binaries and compiled code produced by TDM-GCC would be
 ABI-compatible with other Windows compilers, such as MinGW.org, MinGW-w64/MSYS2,
 and even Microsoft Visual C/C++. This is sadly not the case.
 
-* Generated code:
+* Generated object files:
   * [MAYBE: MinGW.org, `mingw32`]
     * The **DW2** flavor of this TDM32 edition is "drop-in" compatible with
       MinGW.org object files (.o) and static library files (.a) from the same
@@ -338,7 +342,7 @@ and even Microsoft Visual C/C++. This is sadly not the case.
     * Linking DLLs to EXEs with C linkage (extern "C", __cdecl, __stdcall) is
       generally safe regardless of maintainer, GCC version, or exception flavor.
     * If you pass the `-shared-libgcc` and `-shared-libstdc++` flags to TDM-GCC,
-      it will built DLLs and EXEs that depend on the libgcc and libstdc++ DLLs.
+      it will build DLLs and EXEs that depend on the libgcc and libstdc++ DLLs.
       A DLL or EXE built with these options can safely link to a MinGW.org or
       MinGW-w64 DLL or EXE and pass exceptions into and out of DLLs, if the
       other GCC and TDM-GCC share the same GCC libstdc++ ABI. The ABI may change
@@ -356,9 +360,9 @@ and even Microsoft Visual C/C++. This is sadly not the case.
       somewhere.
 * `libgcc` and `libstdc++` DLL replaceability:
   * The libgcc DLL distributed with TDM32 GCC is expected to be ABI compatible
-    with the MinGW.org GCC 9 series libgcc DLL, when it is released.
+    with the MinGW.org GCC 10 series libgcc DLL, when it is released.
   * The libstdc++ DLL distributed with TDM32 GCC is expected to be ABI
-    compatible with MinGW.org GCC 9.2 libstdc++, if and when it is released.
+    compatible with MinGW.org GCC 10.3 libstdc++, if and when it is released.
   * The same goes for MinGW-w64/`i686-w64-mingw32`; expect major version
     compatibility for libgcc and major+minor compatibility for libstdc++.
 
@@ -369,9 +373,10 @@ and even Microsoft Visual C/C++. This is sadly not the case.
 As these builds are provided on the same basis as the source releases, and the
 mingw32 target in GCC tends to receive somewhat less-than-average attention,
 some bugs are expected. If you encounter a bug that you are certain is in the
-GCC sources (such as an ICE), or that is due to an issue in the building or
-packaging process, you are encouraged to report it. Please visit the TDM-GCC
-Bugs page at <http://tdm-gcc.tdragon.net/bugs> for bug reporting instructions.
+GCC sources (such as an ICE), you should report it to GCC Bugzilla:
+<https://gcc.gnu.org/bugzilla/>. If it is due to an issue in the TDM-GCC
+build or packaging process, report it at
+<https://github.com/jmeubank/tdm-gcc/issues>.
 
 
 ««    LOCAL FIXES AND CHANGES    »»
@@ -386,12 +391,8 @@ See the [Github repository](https://github.com/jmeubank/tdm-gcc-src) for more de
 + libgcceh.patch                                               # Reintegrate libgcc_eh into libgcc
 + defstatic.patch                                              # Make static versions of libgcc and libstdc++ the default, instead of the shared versions
 + ada-lfs.patch                                                # Allow Ada to build for older versions of the MSVCRT without a stat64 equivalent
-+ relocate.patch                                               # Make GCC fully relocatable, not searching any fixed paths
-+ eh_shmem.patch                                               # Create a shared memory handle to allow exceptions from DLLs without shared GCC DLLs
-+ threads.patch                                                # Support winpthreads for the 32-bit mingw32 target and a static version of winpthreads
 + more-gnattools.patch                                         # Enable building gnatdll for mingw* targets
 + windows-lrealpath.patch                                      # Allow forward slashes in libiberty as path separators on Windows
-+ mutex-leak.patch                                             # Fix memory leak when using C++11 mutexes
 + xmmintrin.patch                                              # Add C++ include guards to xmmintrin.h
 + crtbegin.patch                                               # Remove static modifier from `__EH_FRAME_BEGIN__`
 + gnat-implibs.patch                                           # Create import libraries for the DLL versions of libgnat and libgnarl
@@ -399,24 +400,31 @@ See the [Github repository](https://github.com/jmeubank/tdm-gcc-src) for more de
 + mcrtdll.patch                                                # Allow specifying newer MSVCRT versions with -mcrtdll=
 + dw2-reg-frame.patch                                          # Prevent DW2 frame register/unregister from getting mistakenly stripped
 + libgfortran.patch                                            # Allow libgfortran to use umask semantics on MinGW64 but not on MinGW32
-+ mingw32-float.h.patch                                        # Fix inclusion of GCC float.h before MinGW.org float.h
 + ssp-wincrypt.patch                                           # Include wincrypt.h for libssp
-+ ada-unicode.patch                                            # Fix the include and define order in ada headers to allow Unicode TCHAR detection to work under MinGW.org
-+ mingw-wformat.patch                                          # Add MinGW-specific format attributes to GCC's formatted printf checking
-+ mingw32-ada-socket.patch                                     # Fix headers so that winsock constants are correctly found and used in Ada runtime.
 + libobjc-install.patch                                        # Allow the libobjc DLL to be stripped when installed
-+ Relocate-libintl.patch                                       # Makes libintl resources in Windows binaries automatically relocatable
 + branch-clone_function_name_1-Retain-any-stdcall-suffix.patch # Preserve stdcall @n suffixes at the end of function names when cloning
-+ libstdc__-in-out.patch                                       # Don't use Microsoft-reserved `__in` or `__out` as variable names
 + fix-libatomic-building-for-threads-win32.patch               # Build libatomic with pthreads on Windows
 + ktietz-libgomp.patch                                         # Zero allocated memory in libgomp and run DejaGNU tests if desired
 + gcc-libgomp-ftime64.patch                                    # Use 64-bit ftime in libgomp
 + buildsys.patch                                               # Minor build system hacks for building TDM-GCC in MSYS
 + diagnostic-color.patch                                       # Emit colors in GCC diagnostics when running under MinTTY
 + Handle-spaces-in-path-for-default-manifest.patch             # Allow spaces in specfile entries that expand to full paths if they are library files
-+ Windows-Follow-Posix-dir-exists-semantics-more-close.patch   # From 9f49390e2cd9085ca1cc03906a146861dbe8135f Mon Sep 17 00:00:00 2001
-+ Windows-Don-t-ignore-native-system-header-dir.patch          # From a2bc77d0e198659e72c9addb89a993007de99fe7 Mon Sep 17 00:00:00 2001
++ Windows-Don-t-ignore-native-system-header-dir.patch          # Windows: Don't ignore native system header dir
++ relocate.patch                                               # Make GCC fully relocatable, not searching any fixed paths
++ Relocate-libintl.patch                                       # Makes libintl resources in Windows binaries automatically relocatable
++ ada-unicode.patch                                            # Fix the include and define order in ada headers to allow Unicode TCHAR detection to work under MinGW.org
 + stdcxx-mingw32.patch                                         # Fixes for building libstdc++ under MinGW.org API
++ libgomp-Don-t-hard-code-MS-printf-attributes.patch           # Don't hard-code MS printf attributes
++ libgcc-ldflags.patch                                         # Propagate LDFLAGS while building libgcc_s
++ backport-longjmp-fix.patch                                   # Fix SEH frame pointer alignment
++ mingw32-ada-socket.patch                                     # Fix headers so that winsock constants are correctly found and used in Ada runtime.
++ mingw32.patch                                                # Fixes for building C and Ada under TDM-GCC
++ libstdc__-in-out.patch                                       # Don't use Microsoft-reserved `__in` or `__out` as variable names
++ eh_shmem.patch                                               # Create a shared memory handle to allow exceptions from DLLs without shared GCC DLLs
++ threads.patch                                                # Support winpthreads for the 32-bit mingw32 target and a static version of winpthreads
++ mutex-leak.patch                                             # Fix memory leak when using C++11 mutexes
++ jit-port-libgccjit-to-Windows.patch                          # Build libgccjit for MinGW targets
++ gcc-jit-Rename-libgccjit-dll.patch                           # Build libgccjit with version numbers
 + dw2.patch                                                    # Modify the GCC version string when building the DW2 unwinding flavor
 
 
@@ -432,7 +440,7 @@ Each of the above repositories contains a `_PATCHES` folder, holding the patches
 that were applied to the most recent TDM releases.
 
  * The TDM-GCC installer: https://github.com/jmeubank/tdm-gcc-installer
- * The scripts that drive the builds: https://github.com/jmeubank/tdm-gccmaster-scripts
+ * The scripts that drive the builds: https://github.com/jmeubank/tdm-gcc
 
 
 ««    COMPONENT LICENSES    »»
